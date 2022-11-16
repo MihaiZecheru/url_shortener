@@ -53,7 +53,7 @@ class Create(object):
 
 
 def create_db_url(db: Session, url: schemas.URLBase, custom: str) -> models.URL:
-    if custom and (custom == "site" or get_db_url_by_key(db, custom)):
+    if custom and (custom in [ "site", "docs" ] or get_db_url_by_key(db, custom)):
         return Exception("Custom URL already exists")
 
     key = custom or Create.key(db)
